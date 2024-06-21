@@ -30,11 +30,11 @@ upper_white = np.array([255, 255, 255], dtype=np.uint8)
 
 # Class labels for the predictions
 class_labels = [
-    'Patient that have History of MI',
-    'Myocardial Infarction Patients',
-    'Normal Person',
-    'Patient that have abnormal heart beats',
-    'COVID-19 Patients'
+    'Diagnosis Result is : Have History of MI',
+    'Diagnosis Result is : Myocardial Infarction',
+    'Diagnosis Result is : Normal Person',
+    'Diagnosis Result is : Abnormal heart beats',
+    'Diagnosis Result is : COVID-19'
 ]
 
 @app.route('/predict', methods=['POST'])
@@ -93,7 +93,7 @@ def predict():
             # Get the predicted category
             predicted_category = class_labels[np.argmax(prediction)]
 
-            return jsonify({"predicted_category": predicted_category})
+            return jsonify({"Diagnosis Result": predicted_category})
         else:
             return jsonify({"error": "Failed to load the image."})
     except Exception as e:
